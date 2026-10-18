@@ -1,9 +1,11 @@
 # Changelog
 
+## Beta 0.7.0
+- Drei wählbare Hammertypen mit unterschiedlicher Schlaggeschwindigkeit, Abkühlung und Präzisionswirkung.
+- Leuchtender Zielkreis auf dem Werkstück und positionsbasierte Trefferwertung über Raycasting.
+- Qualitätswertung und Verkaufsbonus durch Treffgenauigkeit.
+- Touch- und Button-Bedienung parallel verfügbar.
+- Vorhandener Spielstand bleibt kompatibel.
+
 ## Beta 0.6.0
-- Werkstücke verformen sich sichtbar schrittweise beim Schmieden (Haken, Hufeisen, Klinge).
-- Temperaturbalken mit Warnung vor zu niedriger bzw. zu hoher Temperatur.
-- Kamera-Zurücksetzen-Button für die mobile Steuerung.
-- Optionales Vibrationsfeedback auf unterstützten Geräten.
-- Bedienhinweise verbessert und nicht verwendeten Code entfernt.
-- Spielstand kompatibel zur bisherigen Beta 0.5.0.
+- Dynamische Werkstückformen, Temperaturbalken, Kamerarückstellung.

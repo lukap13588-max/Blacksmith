@@ -1,19 +1,20 @@
-# Blacksmith Simulator 3D – Beta 0.6.0
-
-Mobile 3D-Schmiedewerkstatt für iPhone und Desktop. Enthält Aufträge für Eisenhaken, Hufeisen und kleine Klingen.
+# Blacksmith Simulator 3D – Beta 0.7.0
 
 ## Installation
-Die `index.html` im Stammverzeichnis des GitHub-Repositories ersetzen und auf GitHub Pages veröffentlichen. `README.md` und `CHANGELOG.md` können ebenfalls hochgeladen werden.
+Dateien aus der ZIP in das Stammverzeichnis des GitHub-Repositories laden. `index.html` ersetzen, committen und GitHub Pages neu laden. Internet wird für Three.js benötigt.
 
-## Spielablauf
-1. **Erhitzen**: Warten, bis das Werkstück mindestens 500 °C erreicht.
-2. **Schmieden**: Den Button drücken oder das Werkstück am Amboss antippen.
-3. **Abkühlen**: Nach der erforderlichen Anzahl Schläge abschrecken.
-4. **Verkaufen**: Münzen verdienen und die Esse verbessern.
+## Neues Schmiedesystem
+- Drei Werkzeuge: Flachhammer (Standard), Finnenhammer (anspruchsvoll), Präzisionshammer (langsamer und genauer).
+- Auf dem Amboss erscheint beim Schmieden ein leuchtender Zielkreis. Auf das Metall in der Nähe des Kreises tippen. Alternativ weiter den Button **Schmieden** nutzen.
+- Trefferpräzision wirkt sich auf die Produktqualität aus; die Durchschnittspräzision gibt beim Verkauf einen kleinen Bonus.
+- Zu kaltes und zu heißes Metall verringert die Qualität.
 
-Bei 500–1050 °C schmiedest du mit guter Qualität. Über 1050 °C steigt der Qualitätsverlust.
+## Ablauf
+1. Produkt wählen.
+2. **Erhitzen** drücken und mindestens 500 °C abwarten.
+3. Werkzeug wählen und mit dem Finger auf das Werkstück oder **Schmieden** drücken.
+4. Bei Bedarf erneut erhitzen.
+5. Nach allen Schlägen **Abkühlen** und **Verkaufen** drücken.
+6. Münzen für Esse-Upgrades verwenden.
 
-## Steuerung
-Wischen dreht die Kamera, zwei Finger zoomen. Das Fadenkreuz oben rechts setzt die Kamera zurück. Münzen und Verbesserungen bleiben im Browser gespeichert.
-
-**Hinweis:** Three.js wird über CDN geladen. Zum Start ist eine Internetverbindung nötig. Die tatsächliche Darstellung auf iPhone muss im Browser geprüft werden.
+Bestehende Münzen und Upgrades werden weiterhin unter dem bisherigen Speicherschlüssel gespeichert.
