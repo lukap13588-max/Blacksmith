@@ -1,9 +1,5 @@
-# Changelog
+# Änderungen
 
-## Alpha 0.3.1
-- JavaScript-Syntaxfehler in der Anweisungsanzeige behoben (Zeilenumbruch in Zeichenkette).
-- Versionsbezeichnung aktualisiert.
-- README und Changelog ergänzt.
-
-## Alpha 0.3
-- Werkstatt, drei Produkte, Schmiedeanimationen und Aufträge.
+## Alpha 0.3.2
+- JavaScript-Abbruch behoben: Auftragsstatus aktualisiert nur den vorhandenen Textknoten, statt die Fortschrittsanzeige aus dem DOM zu löschen.
+- Keine Spielstände absichtlich zurückgesetzt.
