@@ -1,15 +1,25 @@
-# Blacksmith Simulator 3D – Beta 0.8.2
+# Blacksmith Simulator 3D – Beta 1.0.0 (Ego-Perspektive)
 
-## Neue sichtbare Ausbaustufen
-Amboss, Abschreckbecken, Werkbank und Esse erhalten für jede der ersten fünf Stufen ein eigenes 3D-Modell mit anderer Größe, Form und Ausstattung. Die Modelle wechseln sofort beim Kauf. Der Spielstand wird weiterhin im Browser gespeichert.
+## Neue Steuerung
+- **iPhone/Handy:** Links mit virtuellem Joystick laufen, auf der rechten Bildschirmseite wischen zum Umsehen. Rechts unten **Benutzen** für die Station.
+- **PC:** WASD zum Laufen, Maus zum Umsehen (Klick auf die 3D-Welt für Maus-Fixierung), E zum Benutzen, Escape für freien Mauszeiger.
 
-## Installation auf GitHub Pages
-1. ZIP entpacken.
-2. `index.html`, `README.md`, `CHANGELOG.md` im Repository-Hauptverzeichnis ersetzen.
-3. Commit speichern und die Spielseite aktualisieren.
+## Schmiedeablauf
+1. Zum **Materiallager** hinten rechts laufen und Rohling aufnehmen.
+2. Zur **Esse** gehen und Rohling hineinlegen. Auf mindestens 500 °C erhitzen lassen.
+3. Metall aus der Esse nehmen und zum **Amboss** tragen.
+4. Auf den Amboss legen, mit **Benutzen** Hammerschläge ausführen. Falls das Metall abkühlt, zur Esse zurücktragen und nachheizen.
+5. Fertiges Werkstück am Amboss aufnehmen und zum **Abschreckbecken** bringen.
+6. Zur **Werkbank** gehen und das Produkt verkaufen.
 
-## Bedienung
-Metall erhitzen, schmieden, abkühlen, verkaufen. Über **🏗 Werkstatt** Amboss, Becken und Werkbank ausbauen; die Esse über den normalen Upgrade-Button verbessern.
+## Weiterhin enthalten
+Kundenaufträge, Materiallager, Werkstatt-Upgrades mit sichtbaren 3D-Änderungen und bisherige Spielstände. Werkstatt-Shop und Material-Shop öffnen über die oberen rechten Buttons.
 
-## Technischer Hinweis
-Die Modelle sind programmatisch aus 3D-Grundformen zusammengesetzt und noch keine extern gestalteten, hochdetaillierten Assets. Die WebGL-Darstellung und Touch-Funktionen müssen auf dem Zielgerät getestet werden.
+## Grenzen dieser ersten Ego-Version
+- Die Interaktion ist distanzbasiert und über eine Aktionstaste; kein physikalisches Greifen oder freies Ablegen.
+- Das Schmieden verwendet die bisherigen animierten Schläge; freies Zielen auf einzelne Metallpunkte folgt später.
+- Ein vollständiger iPhone-Browsertest wurde nicht durchgeführt.
+- Three.js benötigt Internetverbindung.
+
+## Installation
+Alle drei Dateien in dein GitHub-Repository laden; `index.html` ersetzen und die GitHub-Pages-Seite neu laden.

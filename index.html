@@ -1,9 +1,23 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>Blacksmith Simulator 3D · Beta 0.8.2</title><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>Blacksmith Simulator 3D · Beta 1.0.0</title><style>
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#14100e;color:#fff;font-family:system-ui,-apple-system,Arial}canvas{display:block;touch-action:none;position:fixed;inset:0;z-index:0}#hud{position:fixed;top:calc(env(safe-area-inset-top) + 8px);left:10px;right:10px;pointer-events:none;z-index:2;text-shadow:0 2px 5px #000}h1{font-size:clamp(15px,3.5vw,20px);letter-spacing:.6px;margin:2px 0 8px;color:#ffe0aa}#stats{display:flex;gap:7px;flex-wrap:wrap}.pill{border:1px solid #a17b4c80;background:#1e1916dc;padding:7px 9px;border-radius:9px;font-size:12px;font-weight:700}#order{margin-top:7px;font-size:12px;color:#fbd5a1;background:#1e1916db;border-radius:8px;padding:7px 9px;display:inline-block}#toast{position:fixed;top:155px;left:50%;transform:translateX(-50%);max-width:90%;background:#201912ed;border:1px solid #bb8648;border-radius:10px;padding:10px 13px;font-size:13px;text-align:center;opacity:0;transition:opacity .25s;pointer-events:none}#panel{pointer-events:auto;z-index:20;position:fixed;bottom:calc(env(safe-area-inset-bottom) + 9px);left:9px;right:9px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}button{position:relative;z-index:21;cursor:pointer;pointer-events:auto;touch-action:manipulation;border:1px solid #b48652;border-radius:12px;background:linear-gradient(#60402b,#302015);color:#fff;padding:12px 3px;font-size:12px;font-weight:800;min-height:62px;box-shadow:0 3px 10px #000a}button:active{transform:scale(.97);filter:brightness(1.2)}button:disabled{opacity:.45}#hit{background:linear-gradient(#b26a29,#563019);border-color:#f2b46a}#progress{margin-top:7px;width:min(330px,90vw);height:8px;border:1px solid #9e7044;background:#201713;border-radius:8px;overflow:hidden}#progressFill{height:100%;width:0%;background:linear-gradient(90deg,#e75b25,#ffd26c);transition:width .2s}#recipe{pointer-events:auto;z-index:20;position:fixed;right:10px;top:calc(env(safe-area-inset-top) + 126px);background:#211a15e8;border:1px solid #906a48;border-radius:10px;padding:8px;font-size:12px;max-width:150px}#recipe select{background:#38271e;color:white;border:1px solid #a57749;border-radius:6px;padding:6px;width:100%;margin-top:6px}#instruction{pointer-events:none;z-index:3;position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 155px);background:#1a1411d9;border-left:3px solid #e39c53;padding:8px 10px;font-size:12px;max-width:240px;border-radius:5px}#sell{grid-column:1/3;background:linear-gradient(#49603c,#283722);border-color:#91b87b}#upgrade{background:linear-gradient(#525061,#282633);border-color:#9991be}#guide{z-index:3;position:fixed;bottom:calc(env(safe-area-inset-bottom) + 150px);left:10px;right:10px;text-align:center;font-size:11px;color:#fff9;text-shadow:0 1px 5px black;pointer-events:none}#error{display:none;position:fixed;inset:20% 7%;background:#3a1717;padding:20px;border-radius:12px;z-index:99;overflow:auto;white-space:pre-wrap}#combo{position:fixed;top:calc(env(safe-area-inset-top) + 108px);left:10px;background:#21190ee8;border:1px solid #d19a4d;border-radius:8px;padding:7px 10px;font-size:12px;font-weight:800;z-index:6;pointer-events:none}#combo:empty{display:none}#tapHint{position:fixed;top:46%;left:50%;transform:translate(-50%,-50%);font-size:13px;background:#26180cc9;padding:8px 12px;border-radius:20px;border:1px solid #c48d49;pointer-events:none;z-index:4;opacity:.85}#guide{bottom:calc(env(safe-area-inset-bottom) + 154px)}button{transition:filter .1s,transform .1s}#heat{border-color:#ff9349}#hit{border-color:#ffd37b}#progressFill{box-shadow:0 0 9px #ff8d32}#heatMeter{position:fixed;left:10px;top:calc(env(safe-area-inset-top) + 113px);width:170px;height:9px;border:1px solid #a67a50;background:#211a17;border-radius:20px;overflow:hidden;pointer-events:none;z-index:4}#heatFill{height:100%;width:0%;background:linear-gradient(90deg,#725c54,#e25929,#ffd071);transition:width .15s}#heatLabel{position:fixed;left:11px;top:calc(env(safe-area-inset-top) + 125px);font-size:10px;color:#ffe5bf;text-shadow:0 1px 3px #000;pointer-events:none;z-index:4}#resetView{position:fixed;right:12px;top:calc(env(safe-area-inset-top) + 78px);z-index:8;width:46px;height:42px;min-height:42px;padding:4px;font-size:19px;background:#2f2924d9;pointer-events:auto}#toolbox{position:fixed;left:10px;bottom:calc(env(safe-area-inset-bottom) + 222px);z-index:19;background:#241a13e8;border:1px solid #b48652;border-radius:11px;padding:8px 10px;max-width:calc(100vw - 20px);font-size:11px}#toolbox select{background:#38271e;color:white;border:1px solid #a57749;border-radius:6px;padding:6px;font-size:12px;max-width:145px}#aimStatus{display:block;margin-top:5px;color:#ffd7a4}#panel{z-index:20}#instruction{bottom:calc(env(safe-area-inset-bottom) + 285px);max-width:min(240px,70vw)}#guide{bottom:calc(env(safe-area-inset-bottom) + 209px)}#tapHint{top:53%;font-size:11px;max-width:210px;text-align:center}@media(max-height:680px){#toolbox{bottom:calc(env(safe-area-inset-bottom) + 195px)}#instruction{bottom:calc(env(safe-area-inset-bottom) + 250px)}#guide{display:none}button{min-height:54px}} #shopToggle{position:fixed;top:calc(env(safe-area-inset-top) + 8px);right:10px;z-index:12;min-height:36px;padding:7px 10px;font-size:12px;background:#3d3023}
 #workshopShop{position:fixed;z-index:20;top:50%;left:50%;transform:translate(-50%,-50%);width:min(94vw,440px);max-height:75dvh;overflow-y:auto;padding:15px;background:#211b17f5;border:2px solid #c68a4c;border-radius:16px;box-shadow:0 0 0 100vmax #0009;color:#fff;touch-action:pan-y}
 #workshopShop[hidden]{display:none}.shopHead{display:flex;align-items:center;justify-content:space-between;gap:10px}.shopHead button{min-height:36px;padding:6px 12px}.shopItem{display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid #6b5138;padding:10px 0}.shopItem small{color:#cfb99b}.shopItem button{min-height:42px;padding:7px 9px;min-width:115px}.shopItem button:disabled{opacity:.5}#workshopShop p,#shopStatus{font-size:12px;color:#e7c9a1}
+#ordersToggle{position:fixed;top:calc(env(safe-area-inset-top) + 48px);right:10px;z-index:12;min-height:36px;padding:7px 10px;font-size:12px;background:#38413b}
+#ordersShop{position:fixed;z-index:30;top:50%;left:50%;transform:translate(-50%,-50%);width:min(94vw,440px);max-height:78dvh;overflow-y:auto;padding:15px;background:#211b17f7;border:2px solid #8ab49d;border-radius:16px;box-shadow:0 0 0 100vmax #000a;color:white;touch-action:pan-y}
+#ordersShop[hidden]{display:none}#ordersShop p,#inventoryStatus,#contractDetails,#contractStatus{font-size:12px;color:#ead3b3;margin:8px 0}#ordersShop select{background:#38271e;color:white;padding:8px;border:1px solid #a57749;border-radius:7px}#ordersShop>button{min-height:40px;padding:8px;margin:4px 4px 4px 0}#ordersShop .shopItem button{min-height:38px}
+
+#panel,#toolbox,#instruction,#guide,#tapHint,#resetView{display:none!important}
+#recipe{top:calc(env(safe-area-inset-top) + 95px);left:10px;right:auto}
+#hud{right:105px}#order{max-width:min(82vw,320px)}
+#crosshair{position:fixed;left:50%;top:48%;transform:translate(-50%,-50%);color:#fff;font-size:25px;text-shadow:0 0 6px #000;pointer-events:none;z-index:8}
+#interactionHint{position:fixed;top:56%;left:50%;transform:translateX(-50%);width:min(88vw,380px);text-align:center;pointer-events:none;z-index:8;color:#ffe1ac;background:#21180dbb;padding:7px;border-radius:10px;font-size:12px}
+#joystick{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 22px);left:18px;width:125px;height:125px;border:2px solid #ffffff70;border-radius:50%;background:#19191966;z-index:10;touch-action:none}
+#joystickKnob{position:absolute;width:54px;height:54px;left:34px;top:34px;border-radius:50%;background:#c58e52bb;border:2px solid #ffddab;pointer-events:none}
+#interact{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 45px);right:18px;z-index:11;width:112px;height:78px;min-height:78px;background:#8c5828e8;border:2px solid #f6cb84;font-size:15px}
+#fpsHelp{position:fixed;bottom:calc(env(safe-area-inset-bottom) + 151px);left:10px;right:10px;text-align:center;font-size:11px;color:#fff9;pointer-events:none;z-index:7}
+@media(min-width:700px){#joystick{opacity:.55}#fpsHelp{font-size:13px}}
 </style></head><body>
-<div id="hud"><h1>⚒ BLACKSMITH SIMULATOR 3D <span style="font-size:10px;color:#d4a76e">BETA 0.8.2</span></h1><div id="stats"><div class="pill" id="temp">🌡 20 °C</div><div class="pill" id="hits">⚒ 0 / 8</div><div class="pill" id="coins">🪙 0</div><div class="pill" id="quality">⭐ Qualität: –</div></div><div id="order">📜 Auftrag: 1 Eisenhaken schmieden<div id="progress"><div id="progressFill"></div></div></div>
+<div id="hud"><h1>⚒ BLACKSMITH SIMULATOR 3D <span style="font-size:10px;color:#d4a76e">BETA 1.0.0</span></h1><div id="stats"><div class="pill" id="temp">🌡 20 °C</div><div class="pill" id="hits">⚒ 0 / 8</div><div class="pill" id="coins">🪙 0</div><div class="pill" id="quality">⭐ Qualität: –</div></div><div id="order">📜 Auftrag: 1 Eisenhaken schmieden<div id="progress"><div id="progressFill"></div></div></div>
 </div>
 <div id="heatMeter"><div id="heatFill"></div></div><div id="heatLabel">20 °C · kalt</div><button id="resetView" aria-label="Kamera zurücksetzen" title="Kamera zurücksetzen">⌖</button><div id="toast"></div><div id="combo"></div><div id="tapHint">🎯 Leuchtenden Kreis treffen oder Schmieden drücken</div><div id="recipe">📋 <b>Werkstück</b><select id="product"><option value="hook">Eisenhaken</option><option value="shoe">Hufeisen</option><option value="blade">Kleine Klinge</option></select></div><div id="instruction">🔥 Erhitze zuerst dein Werkstück auf mindestens 500 °C.</div><div id="guide">Wischen: Kamera · Zwei Finger: Zoom · Amboss antippen: schmieden · Wischen: Kamera</div><div id="toolbox">🔨 Werkzeug <select id="hammerTool"><option value="flat">Flachhammer</option><option value="peen">Finnenhammer</option><option value="precision">Präzisionshammer</option></select><span id="aimStatus">Treffzone: Mitte · Präzision 0 %</span></div><div id="panel"><button id="heat">🔥<br>Erhitzen</button><button id="hit">⚒️<br>Schmieden</button><button id="cool">💧<br>Abkühlen</button><button id="sell">🪙 Produkt verkaufen</button><button id="upgrade">⬆️ Esse (50 🪙)</button></div><button id="shopToggle" type="button" aria-expanded="false">🏗 Werkstatt</button>
 <section id="workshopShop" aria-label="Werkstatt ausbauen" hidden>
@@ -14,7 +28,21 @@
  <div class="shopItem"><span>🪵 Werkbank<br><small>Zusätzliche Auftragsprämie</small></span><button id="buyBench" type="button"></button></div>
  <div id="shopStatus" aria-live="polite"></div>
 </section>
-<div id="error"></div><div id="loading" aria-live="polite" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;background:#241a13e8;border:1px solid #c68a4c;border-radius:12px;padding:12px 18px;pointer-events:none">3D-Werkstatt wird geladen …</div>
+<button id="ordersToggle" type="button" aria-expanded="false">📦 Aufträge & Lager</button>
+<section id="ordersShop" aria-label="Aufträge und Materiallager" hidden>
+ <div class="shopHead"><strong>📦 Aufträge & Materiallager</strong><button id="ordersClose" type="button">✕</button></div>
+ <p>Jedes Werkstück verbraucht 1 Einheit Material. Kaufe Vorräte und nimm Kundenaufträge an.</p>
+ <div id="inventoryStatus"></div>
+ <div class="shopItem"><span>🔩 Eisen<br><small>Günstig und vielseitig</small></span><button id="buyIron" type="button"></button></div>
+ <div class="shopItem"><span>⚙️ Stahl<br><small>Mehr Verkaufserlös</small></span><button id="buySteel" type="button"></button></div>
+ <div class="shopItem"><span>🟠 Kupfer<br><small>Besondere Aufträge</small></span><button id="buyCopper" type="button"></button></div>
+ <div class="shopItem"><span>Material für nächstes Werkstück</span><select id="materialChoice"><option value="iron">Eisen</option><option value="steel">Stahl</option><option value="copper">Kupfer</option></select></div>
+ <div id="contractDetails"></div>
+ <button id="acceptContract" type="button">📜 Kundenauftrag annehmen</button>
+ <button id="skipContract" type="button">🔄 Neuer Kunde (12 🪙)</button>
+ <div id="contractStatus" aria-live="polite"></div>
+</section>
+<div id="crosshair">+</div><div id="interactionHint">Gehe zum Materiallager.</div><div id="joystick"><div id="joystickKnob"></div></div><button id="interact" type="button">Benutzen</button><div id="fpsHelp">Links laufen · rechts umsehen · Benutzen | PC: WASD, Maus, E</div><div id="error"></div><div id="loading" aria-live="polite" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;background:#241a13e8;border:1px solid #c68a4c;border-radius:12px;padding:12px 18px;pointer-events:none">3D-Werkstatt wird geladen …</div>
 <script type="module">
 const showError=(message)=>{const box=document.getElementById('error');box.style.display='block';box.textContent='3D-Fehler: '+message+'\n\nBitte Seite neu laden. Wenn es bleibt, Screenshot senden.';};
 window.addEventListener('error',e=>showError(e.message||'Unbekannter JavaScript-Fehler'));
@@ -40,6 +68,10 @@ const troughBase=block(1.65,.8,1.12,timber,2.3,.42,-1.7);const water=block(1.42,
 // Shelves and tools
 for(let y of [1.25,2.2]){block(2.3,.13,.58,timber,2.8,y,-4.06);for(let i=0;i<3;i++){cylinder(.1,.13,.36,bronze,2.1+i*.55,y+.23,-4.05)}}
 for(let i=0;i<4;i++){const rod=cylinder(.035,.035,.9,iron,-4.9+i*.22,1.65,-4.07);rod.rotation.z=.22+i*.13}const benchTop=block(1.8,.16,.8,timber,2.4,.86,1.5);for(let x of [1.65,3.15])block(.13,.8,.13,timber,x,.42,1.5);
+// Physical material rack for the first-person pickup station.
+block(1.45,.12,.75,timber,3.0,.75,-3.55);
+for(let i=0;i<5;i++){const bar=block(.18,.18,.65,i%2?iron:dark,2.45+i*.26,.94,-3.55);bar.rotation.z=.03*i}
+for(const x of [2.35,3.65])block(.12,1.2,.12,timber,x,.6,-3.55);
 // Each purchased tier adds permanent, distinct 3D parts to its station.
 const stationParts={anvil:[],quench:[],bench:[],forge:[]};
 const silver=material(0xc2c9d1,.86,.22),gold=material(0xcaa14d,.7,.27),copper=material(0xbd7549,.68,.3),blueSteel=material(0x45677c,.75,.3);
@@ -180,7 +212,39 @@ function shapeSteel(){
 }
 
 const saveKey='blacksmith-alpha03';let saved={};try{saved=JSON.parse(localStorage.getItem(saveKey)||'{}')}catch{}let coins=Number(saved.coins)||0,level=Number(saved.level)||0,orders=Number(saved.orders)||0,anvilLevel=Math.max(0,Math.min(5,Number(saved.anvilLevel)||0)),quenchLevel=Math.max(0,Math.min(5,Number(saved.quenchLevel)||0)),benchLevel=Math.max(0,Math.min(5,Number(saved.benchLevel)||0)),temp=20,hits=0,quality=100,stage='raw',heatActive=false,hammerTime=0,impact=false,steamTime=0,ready=false,combo=0,lastImpact=0;const recipes={hook:{name:'Eisenhaken',hits:8,price:22},shoe:{name:'Hufeisen',hits:11,price:34},blade:{name:'Kleine Klinge',hits:15,price:55}};let selected='hook',target=8,tool='flat',aimX=0,aimZ=0,lastAccuracy=0,precisionSum=0,precisionCount=0;
-function toast(message){$('toast').textContent=message;$('toast').style.opacity='1';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.opacity='0',2100)}function save(){try{localStorage.setItem(saveKey,JSON.stringify({coins,level,orders,anvilLevel,quenchLevel,benchLevel}))}catch{}}
+function toast(message){$('toast').textContent=message;$('toast').style.opacity='1';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.opacity='0',2100)}function save(){try{localStorage.setItem(saveKey,JSON.stringify({coins,level,orders,anvilLevel,quenchLevel,benchLevel,stock,materialChoice,activeContract,contractNumber}))}catch{}}
+const materialTypes={iron:{name:'Eisen',cost:8,bonus:0},steel:{name:'Stahl',cost:18,bonus:17},copper:{name:'Kupfer',cost:14,bonus:10}};
+const stock={iron:Math.max(0,Number(saved.stock?.iron)??0),steel:Math.max(0,Number(saved.stock?.steel)||0),copper:Math.max(0,Number(saved.stock?.copper)||0)};
+if(!saved.stock)stock.iron=5;
+let materialChoice=materialTypes[saved.materialChoice]?saved.materialChoice:'iron';
+let usedMaterial=null,activeContract=saved.activeContract||null,contractNumber=Math.max(0,Number(saved.contractNumber)||0);
+const clients=['Schmiedegilde','Dorfschmied','Wirtshaus','Bauernhof','Stadtwache','Händler'];
+function offeredContract(){
+ const n=contractNumber;
+ const product=['hook','shoe','blade'][n%3],material=['iron','steel','copper'][(Math.floor(n/3)+n)%3];
+ return {id:n,client:clients[n%clients.length],product,material,minQuality:Math.min(85,55+(n%4)*10),bonus:22+(n%5)*9};
+}
+if(activeContract){selected=activeContract.product;target=recipes[selected].hits;materialChoice=activeContract.material;$('product').value=selected}
+function refreshOrders(){
+ $('inventoryStatus').textContent=`Lager: Eisen ${stock.iron} · Stahl ${stock.steel} · Kupfer ${stock.copper}`;
+ for(const [key,m] of Object.entries(materialTypes)){$('buy'+key[0].toUpperCase()+key.slice(1)).textContent=`+1 · ${m.cost} 🪙`;$('buy'+key[0].toUpperCase()+key.slice(1)).disabled=coins<m.cost}
+ $('materialChoice').value=materialChoice;
+ $('materialChoice').disabled=!!usedMaterial||hits>0||ready;
+ const c=activeContract||offeredContract();
+ $('contractDetails').textContent=`${c.client}: ${recipes[c.product].name} aus ${materialTypes[c.material].name} · Qualität mind. ${c.minQuality}% · Bonus ${c.bonus} 🪙`;
+ $('acceptContract').disabled=!!activeContract||!!usedMaterial||hits>0||ready;
+ $('acceptContract').textContent=activeContract?'✓ Auftrag angenommen':'📜 Kundenauftrag annehmen';
+ $('skipContract').disabled=!!activeContract||coins<12;
+ $('contractStatus').textContent=activeContract?'Aktiv: Passendes Produkt und Material liefern, sonst normal verkaufen.':'Du kannst einen Kundenauftrag annehmen oder frei schmieden.';
+}
+function buyMaterial(key){const m=materialTypes[key];if(coins<m.cost)return;coins-=m.cost;stock[key]++;save();refresh();toast(`${m.name} gekauft.`)}
+for(const key of Object.keys(materialTypes))$('buy'+key[0].toUpperCase()+key.slice(1)).onclick=()=>buyMaterial(key);
+$('materialChoice').onchange=e=>{if(usedMaterial||hits||ready){e.target.value=materialChoice;return}materialChoice=e.target.value;save();refresh()};
+$('acceptContract').onclick=()=>{if(activeContract||usedMaterial||hits||ready)return;activeContract=offeredContract();contractNumber++;selected=activeContract.product;target=recipes[selected].hits;materialChoice=activeContract.material;$('product').value=selected;shapeSteel();save();refresh();toast('Kundenauftrag angenommen!')};
+$('skipContract').onclick=()=>{if(activeContract||coins<12)return;coins-=12;contractNumber++;save();refresh();toast('Neuer Kunde ist da.')};
+function setOrders(open){$('ordersShop').hidden=!open;$('ordersToggle').setAttribute('aria-expanded',String(open));if(open)setShop(false)}
+$('ordersToggle').onclick=()=>setOrders($('ordersShop').hidden);
+$('ordersClose').onclick=()=>setOrders(false);
 const shopItems={
  anvil:{get:()=>anvilLevel,set:v=>anvilLevel=v,base:65,name:'Amboss',button:'buyAnvil'},
  quench:{get:()=>quenchLevel,set:v=>quenchLevel=v,base:80,name:'Abschreckbecken',button:'buyQuench'},
@@ -204,21 +268,101 @@ function purchaseShop(key){
 $('buyAnvil').onclick=()=>purchaseShop('anvil');
 $('buyQuench').onclick=()=>purchaseShop('quench');
 $('buyBench').onclick=()=>purchaseShop('bench');
-function setShop(open){$('workshopShop').hidden=!open;$('shopToggle').setAttribute('aria-expanded',String(open))}
+function setShop(open){if(open)$('ordersShop').hidden=true;$('workshopShop').hidden=!open;$('shopToggle').setAttribute('aria-expanded',String(open))}
 $('shopToggle').onclick=()=>setShop($('workshopShop').hidden);
 $('shopClose').onclick=()=>setShop(false);
-function refresh(){refreshShop();const glow=Math.max(0,(temp-320)/800);steelMat.emissiveIntensity=glow*2.5;steelMat.color.setHex(temp>950?0xffd280:temp>700?0xff8a44:temp>450?0xba4a30:0x7b858b);$('temp').textContent=`🌡 ${Math.round(temp)} °C`;$('heatFill').style.width=(Math.min(100,temp/1150*100))+'%';$('heatLabel').textContent=temp<500?'Zu kalt · unter 500 °C':temp<=1050?'Optimale Schmiedetemperatur':'Sehr heiß · Qualitätsverlust möglich';$('hits').textContent=`⚒ ${hits} / ${target}`;$('coins').textContent=`🪙 ${coins}`;$('quality').textContent=`⭐ Qualität: ${hits?Math.round(quality)+'%':'–'}`;$('order').firstChild.textContent=`📜 Auftrag ${orders+1}: ${recipes[selected].name} · ${ready?'Fertig – verkaufen!':hits>=target?'Jetzt abschrecken':'Schmieden'}`;$('progressFill').style.width=(hits/target*100)+'%';$('instruction').textContent=ready?'🪙 Fertig! Verkaufe dein Produkt.':hits>=target?'💧 Form fertig! Jetzt abschrecken.':temp<500?'🔥 Metall zu kalt – zuerst erhitzen.':stage==='heating'?'🔥 Metall wird erhitzt. Ab 500 °C schmieden.':`⚒️ ${target-hits} Schläge bis zur fertigen Form.`;$('sell').disabled=!ready;$('hit').disabled=ready||hits>=target;$('cool').disabled=ready||hits<target;$('tapHint').style.display=(stage==='forging'&&temp>=500&&hits<target)?'block':'none';$('combo').textContent=combo>=2?'🔥 Schlagserie x'+combo:'';$('aimStatus').textContent=`Treffzone: ${aimX<-.14?'Links':aimX>.14?'Rechts':'Mitte'} · Letzter Treffer ${lastAccuracy}%`;targetMarker.visible=stage==='forging'&&!ready&&hits<target;$('upgrade').textContent=`⬆️ Esse (${50+level*40} 🪙) · St. ${level+1}`}
+function refresh(){refreshShop();refreshOrders();const glow=Math.max(0,(temp-320)/800);steelMat.emissiveIntensity=glow*2.5;steelMat.color.setHex(temp>950?0xffd280:temp>700?0xff8a44:temp>450?0xba4a30:0x7b858b);$('temp').textContent=`🌡 ${Math.round(temp)} °C`;$('heatFill').style.width=(Math.min(100,temp/1150*100))+'%';$('heatLabel').textContent=temp<500?'Zu kalt · unter 500 °C':temp<=1050?'Optimale Schmiedetemperatur':'Sehr heiß · Qualitätsverlust möglich';$('hits').textContent=`⚒ ${hits} / ${target}`;$('coins').textContent=`🪙 ${coins}`;$('quality').textContent=`⭐ Qualität: ${hits?Math.round(quality)+'%':'–'}`;$('order').firstChild.textContent=`📜 Auftrag ${orders+1}: ${recipes[selected].name} (${materialTypes[usedMaterial||materialChoice].name}) · ${ready?'Fertig – verkaufen!':hits>=target?'Jetzt abschrecken':'Schmieden'}`;$('progressFill').style.width=(hits/target*100)+'%';$('instruction').textContent=ready?'🪙 Fertig! Verkaufe dein Produkt.':hits>=target?'💧 Form fertig! Jetzt abschrecken.':temp<500?'🔥 Metall zu kalt – zuerst erhitzen.':stage==='heating'?'🔥 Metall wird erhitzt. Ab 500 °C schmieden.':`⚒️ ${target-hits} Schläge bis zur fertigen Form.`;$('sell').disabled=!ready;$('hit').disabled=ready||hits>=target;$('cool').disabled=ready||hits<target;$('tapHint').style.display=(stage==='forging'&&temp>=500&&hits<target)?'block':'none';$('combo').textContent=combo>=2?'🔥 Schlagserie x'+combo:'';$('aimStatus').textContent=`Treffzone: ${aimX<-.14?'Links':aimX>.14?'Rechts':'Mitte'} · Letzter Treffer ${lastAccuracy}%`;targetMarker.visible=stage==='forging'&&!ready&&hits<target;$('upgrade').textContent=`⬆️ Esse (${50+level*40} 🪙) · St. ${level+1}`}
 function burst(){for(const s of sparks){s.life=.25+Math.random()*.5;s.p.visible=true;s.p.position.set((Math.random()-.5)*.5,1.35,(Math.random()-.5)*.28);s.v.set((Math.random()-.5)*3.6,Math.random()*2.8,(Math.random()-.5)*3.6)}}
-function doHeat(){if(ready){toast('Verkaufe zuerst dein fertiges Produkt.');return}heatActive=true;stage='heating';steel.position.set(-2.35,1.36,-1.9);toast('Esse heizt! Warte auf mindestens 500 °C.');refresh()}
+function doHeat(){if(ready){toast('Verkaufe zuerst dein fertiges Produkt.');return}if(!usedMaterial){if(stock[materialChoice]<1){toast('Kein Material! Öffne Aufträge & Lager.');return}stock[materialChoice]--;usedMaterial=materialChoice;save();}heatActive=true;stage='heating';steel.position.set(-2.35,1.36,-1.9);toast('Esse heizt! Warte auf mindestens 500 °C.');refresh()}
 function doHit(aim=null){if(hits>=target){toast('Form fertig – jetzt abkühlen!');return}if(ready){toast('Produkt zuerst verkaufen.');return}if(hammerTime>0)return;if(temp<500){toast('Zu kalt! Erhitze das Metall auf mindestens 500 °C.');return}heatActive=false;stage='forging';steel.position.set(0,1.34,.05);if(aim){aimX=Math.max(-.4,Math.min(.4,aim.x));aimZ=Math.max(-.3,Math.min(.3,aim.z))}else{aimX=0;aimZ=0}hammerTime=tool==='precision'?.7:tool==='peen'?.62:.56;impact=false;if(navigator.vibrate)navigator.vibrate(12)}
 function doCool(){if(ready){toast('Produkt ist bereits fertig.');return}if(hits<target){toast(`Noch ${target-hits} Hammerschläge nötig.`);return}heatActive=false;stage='quenched';steel.position.set(2.3,.93,-1.7);steamTime=1.7;temp=20;if(navigator.vibrate)navigator.vibrate([30,35,50]);ready=true;refresh();toast('Zisch! Fertig geschmiedet und abgeschreckt.')}
-function doSell(){if(!ready)return;const reward=Math.max(8,Math.round(recipes[selected].price+quality*.35+(precisionCount?precisionSum/precisionCount*.1:0)+quenchLevel*3+benchLevel*4)); coins+=reward;orders++;save();toast(`Verkauft! +${reward} Münzen`);hits=0;quality=100;ready=false;combo=0;lastAccuracy=0;precisionSum=0;precisionCount=0;temp=20;stage='raw';steel.position.set(0,1.34,.05);shapeSteel();refresh()}
+function doSell(){if(!ready)return;let contractBonus=0;if(activeContract){if(activeContract.product===selected&&activeContract.material===usedMaterial&&quality>=activeContract.minQuality){contractBonus=activeContract.bonus;activeContract=null;toast('Kundenauftrag erfolgreich!')}else{toast('Kundenauftrag bleibt offen: Anforderungen nicht erfüllt.')}}const reward=Math.max(8,Math.round(recipes[selected].price+quality*.35+(precisionCount?precisionSum/precisionCount*.1:0)+quenchLevel*3+benchLevel*4+(materialTypes[usedMaterial]?.bonus||0)+contractBonus)); coins+=reward;orders++;usedMaterial=null;save();toast(`Verkauft! +${reward} Münzen${contractBonus?' · Auftragsbonus inklusive':''}`);hits=0;quality=100;ready=false;combo=0;lastAccuracy=0;precisionSum=0;precisionCount=0;temp=20;stage='raw';steel.position.set(3,.96,-3.55);shapeSteel();refresh()}
 function doUpgrade(){const cost=50+level*40;if(coins<cost){toast(`Dir fehlen ${cost-coins} Münzen.`);return}coins-=cost;level++;save();updateWorkshopVisuals();refresh();toast('Esse verbessert! Metall erhitzt sich schneller.')}
-$('hammerTool').onchange=e=>{tool=e.target.value;head.scale.x=tool==='peen'?.72:tool==='precision'?.52:1;head.scale.z=tool==='precision'?.7:1;toast(tool==='flat'?'Flachhammer: ausgeglichene Schläge':tool==='peen'?'Finnenhammer: formt stärker, anspruchsvoller':'Präzisionshammer: genauer, langsamer')};$('product').onchange=e=>{if(hits||ready){e.target.value=selected;toast('Werkstück zuerst fertigstellen und verkaufen.');return}selected=e.target.value;target=recipes[selected].hits;lastAccuracy=0;shapeSteel();refresh()};$('heat').onclick=doHeat;$('hit').onclick=doHit;$('cool').onclick=doCool;$('sell').onclick=doSell;$('upgrade').onclick=doUpgrade;refresh();
-let az=.52,el=.47,dist=7.2,pointers=new Map(),lastPinch=0;function placeCamera(){el=Math.max(.12,Math.min(1.23,el));dist=Math.max(3.6,Math.min(11,dist));camera.position.set(Math.sin(az)*Math.cos(el)*dist,1.2+Math.sin(el)*dist,Math.cos(az)*Math.cos(el)*dist);camera.lookAt(0,1.2,-.6)}placeCamera();$('resetView').addEventListener('click',()=>{az=.52;el=.47;dist=7.2;placeCamera();toast('Kamera zurückgesetzt')});const c=renderer.domElement;c.addEventListener('pointerdown',e=>{c.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY})});c.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;const old=pointers.get(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1){az-=(e.clientX-old.x)*.007;el+=(e.clientY-old.y)*.005}else{const a=[...pointers.values()],gap=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);if(lastPinch)dist*=lastPinch/gap;lastPinch=gap}placeCamera()});const raycaster=new THREE.Raycaster(),touchPoint=new THREE.Vector2();let touchStart=new Map();
-c.addEventListener('pointerdown',e=>{touchStart.set(e.pointerId,{x:e.clientX,y:e.clientY,t:performance.now()})});
-const end=e=>{const start=touchStart.get(e.pointerId);touchStart.delete(e.pointerId);if(start&&Math.hypot(e.clientX-start.x,e.clientY-start.y)<16&&performance.now()-start.t<450&&pointers.size===1){const bounds=c.getBoundingClientRect();touchPoint.set(((e.clientX-bounds.left)/bounds.width)*2-1,-((e.clientY-bounds.top)/bounds.height)*2+1);raycaster.setFromCamera(touchPoint,camera);const hit=raycaster.intersectObject(steel,false);if(hit.length&&stage==='forging'){const local=steel.worldToLocal(hit[0].point.clone());doHit({x:local.x,z:local.z})}}pointers.delete(e.pointerId);lastPinch=0};c.addEventListener('pointerup',end);c.addEventListener('pointercancel',end);
-updateWorkshopVisuals();shapeSteel();const clock=new THREE.Clock();function animate(){requestAnimationFrame(animate);const dt=Math.min(.05,clock.getDelta()),t=clock.elapsedTime;targetMarker.position.set(steel.position.x+(selected==='blade'?Math.sin(hits*1.7)*.22:selected==='shoe'?(hits%2?.24:-.24):Math.sin(hits*1.25)*.17),steel.position.y+.18,steel.position.z);targetMarker.rotation.z=t*.8;for(const {f,offset} of flames){f.scale.y=.8+Math.sin(t*9+offset)*.25;f.position.y=1.48+Math.sin(t*7+offset)*.08}firelight.intensity=26+Math.sin(t*11)*5;water.position.y=.83+Math.sin(t*2)*.012;if(heatActive){temp=Math.min(1150,temp+dt*(125+level*65));if(temp>=1150)heatActive=false;refresh()}else if(!ready&&temp>20){temp=Math.max(20,temp-dt*(stage==='forging'?15:8));refresh()}
+$('hammerTool').onchange=e=>{tool=e.target.value;head.scale.x=tool==='peen'?.72:tool==='precision'?.52:1;head.scale.z=tool==='precision'?.7:1;toast(tool==='flat'?'Flachhammer: ausgeglichene Schläge':tool==='peen'?'Finnenhammer: formt stärker, anspruchsvoller':'Präzisionshammer: genauer, langsamer')};$('product').onchange=e=>{if(hits||ready||usedMaterial){e.target.value=selected;toast('Werkstück zuerst fertigstellen und verkaufen.');return}selected=e.target.value;target=recipes[selected].hits;lastAccuracy=0;shapeSteel();refresh()};$('heat').onclick=doHeat;$('hit').onclick=doHit;$('cool').onclick=doCool;$('sell').onclick=doSell;$('upgrade').onclick=doUpgrade;refresh();
+// First-person movement: left virtual joystick / WASD, right swipe / mouse.
+let yaw=-.15,pitch=-.12,player=new THREE.Vector3(0,0,3.3),held=false,activeStation=null;
+const stations=[
+ {id:'stock',name:'Materiallager',pos:new THREE.Vector3(3.0,0,-3.5),range:2.1},
+ {id:'forge',name:'Esse',pos:new THREE.Vector3(-2.35,0,-1.9),range:2.45},
+ {id:'anvil',name:'Amboss',pos:new THREE.Vector3(0,0,.05),range:1.75},
+ {id:'water',name:'Abschreckbecken',pos:new THREE.Vector3(2.3,0,-1.7),range:1.8},
+ {id:'bench',name:'Werkbank',pos:new THREE.Vector3(2.4,0,1.5),range:1.8}
+];
+const keys=new Set(),joy={x:0,y:0},cameraTouches=new Map();
+const c=renderer.domElement;
+function placeCamera(){camera.position.set(player.x,1.67,player.z);camera.rotation.order='YXZ';camera.rotation.set(pitch,yaw,0)}
+function stationNear(){let best=null,d=Infinity;for(const st of stations){const distance=player.distanceTo(st.pos);if(distance<st.range&&distance<d){best=st;d=distance}}return best}
+function carryUpdate(){if(held){const direction=new THREE.Vector3(0,-.13,-1).applyEuler(camera.rotation);steel.position.copy(camera.position).addScaledVector(direction,1.1);steel.position.y-=.25}}
+function takeSteel(){held=true;heatActive=false;stage=hits>0?'forging':'raw';toast('Werkstück mit der Zange aufgenommen.')}
+function interaction(){
+ const st=stationNear();
+ if(!st){toast('Gehe näher an eine Arbeitsstation.');return}
+ if(st.id==='stock'){
+  if(held||usedMaterial){toast('Zuerst das aktuelle Werkstück fertigstellen.');return}
+  if(stock[materialChoice]<1){setOrders(true);toast('Kaufe zuerst Material.');return}
+  stock[materialChoice]--;usedMaterial=materialChoice;held=true;save();toast(materialTypes[usedMaterial].name+' aufgenommen.');return;
+ }
+ if(st.id==='forge'){
+  if(!usedMaterial){toast('Hole zuerst einen Rohling aus dem Lager.');return}
+  if(held){held=false;doHeat();toast('Rohling liegt in der Esse. Erhitzen läuft.');return}
+  if(stage==='heating'||temp>=500){takeSteel();return}
+  toast('Kein Werkstück in der Esse.');return;
+ }
+ if(st.id==='anvil'){
+  if(held){held=false;heatActive=false;stage='forging';steel.position.set(0,1.34,.05);toast('Werkstück auf dem Amboss. Jetzt schlagen!');refresh();return}
+  if(stage==='forging'&&hits<target){doHit({x:Math.sin((hits+1)*1.7)*.15,z:0});return}
+  if(stage==='forging'&&hits>=target){held=true;toast('Fertiges Werkstück aufgenommen.');return}
+  toast('Lege zuerst heißes Metall auf den Amboss.');return;
+ }
+ if(st.id==='water'){
+  if(!held){toast('Bringe das fertig geschmiedete Werkstück hierher.');return}
+  if(hits<target){toast('Noch nicht fertig geschmiedet!');return}
+  held=false;doCool();return;
+ }
+ if(st.id==='bench'){
+  if(!ready){toast('Erst schmieden und im Wasser abkühlen.');return}
+  doSell();held=false;return;
+ }
+}
+$('interact').onclick=interaction;
+const joystick=$('joystick'),knob=$('joystickKnob');
+function updateJoy(e){const r=joystick.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),len=Math.max(1,Math.hypot(dx,dy)),scale=Math.min(1,len/45);joy.x=dx/len*scale;joy.y=dy/len*scale;knob.style.transform=`translate(${joy.x*43}px,${joy.y*43}px)`}
+joystick.addEventListener('pointerdown',e=>{joystick.setPointerCapture(e.pointerId);updateJoy(e)});
+joystick.addEventListener('pointermove',e=>{if(joystick.hasPointerCapture(e.pointerId))updateJoy(e)});
+function resetJoy(){joy.x=joy.y=0;knob.style.transform='translate(0,0)'}
+joystick.addEventListener('pointerup',resetJoy);joystick.addEventListener('pointercancel',resetJoy);
+c.addEventListener('pointerdown',e=>{c.setPointerCapture(e.pointerId);cameraTouches.set(e.pointerId,{x:e.clientX,y:e.clientY})});
+c.addEventListener('pointermove',e=>{const old=cameraTouches.get(e.pointerId);if(!old)return;yaw-=(e.clientX-old.x)*.004;pitch=Math.max(-1.15,Math.min(1.15,pitch-(e.clientY-old.y)*.004));cameraTouches.set(e.pointerId,{x:e.clientX,y:e.clientY})});
+c.addEventListener('pointerup',e=>cameraTouches.delete(e.pointerId));c.addEventListener('pointercancel',e=>cameraTouches.delete(e.pointerId));
+addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement?.tagName))return;keys.add(e.code);if(e.code==='KeyE'&&!e.repeat)interaction()});
+addEventListener('keyup',e=>keys.delete(e.code));
+c.addEventListener('click',()=>{if(matchMedia('(pointer:fine)').matches&&!document.pointerLockElement)c.requestPointerLock?.().catch(()=>{})});
+document.addEventListener('mousemove',e=>{if(document.pointerLockElement===c){yaw-=e.movementX*.0025;pitch=Math.max(-1.15,Math.min(1.15,pitch-e.movementY*.0025))}});
+function movePlayer(dt){
+ const forward=(keys.has('KeyW')?1:0)-(keys.has('KeyS')?1:0)-joy.y;
+ const side=(keys.has('KeyD')?1:0)-(keys.has('KeyA')?1:0)+joy.x;
+ const len=Math.max(1,Math.hypot(forward,side)),speed=3.3;
+ const dx=(Math.sin(yaw)*forward+Math.cos(yaw)*side)*speed*dt/len;
+ const dz=(-Math.cos(yaw)*forward+Math.sin(yaw)*side)*speed*dt/len;
+ player.x=Math.max(-4.7,Math.min(4.7,player.x+dx));player.z=Math.max(-3.65,Math.min(4.65,player.z+dz));
+ // Keep walking outside workstations instead of passing through solid equipment.
+ for(const box of [{x:-2.35,z:-1.9,w:1.6,d:1.2},{x:0,z:.05,w:.94,d:.65},{x:2.3,z:-1.7,w:1.15,d:.85},{x:2.4,z:1.5,w:1.2,d:.65}]){
+  const px=player.x-box.x,pz=player.z-box.z;
+  if(Math.abs(px)<box.w&&Math.abs(pz)<box.d){
+   if(box.w-Math.abs(px)<box.d-Math.abs(pz))player.x=box.x+Math.sign(px||1)*box.w;
+   else player.z=box.z+Math.sign(pz||1)*box.d;
+  }
+ }
+ placeCamera();carryUpdate();
+ const st=stationNear();
+ if(st?.id!==activeStation){activeStation=st?.id||null}
+ const messages={stock:'Materiallager: Rohling aufnehmen',forge:held?'Esse: Metall hineinlegen':'Esse: heißes Metall aufnehmen',anvil:held?'Amboss: Werkstück ablegen':hits>=target?'Amboss: Werkstück aufnehmen':'Amboss: Hammerschlag',water:'Wasser: Werkstück abschrecken',bench:'Werkbank: Produkt verkaufen'};
+ $('interactionHint').textContent=st?messages[st.id]:'Gehe zu einer Station und drücke Benutzen';
+ $('interact').disabled=!st;
+ $('interact').textContent=st?'✋ Benutzen':'Zu weit weg';
+}
+placeCamera();
+updateWorkshopVisuals();shapeSteel();steel.position.set(3,.96,-3.55);const clock=new THREE.Clock();function animate(){requestAnimationFrame(animate);const dt=Math.min(.05,clock.getDelta()),t=clock.elapsedTime;movePlayer(dt);targetMarker.position.set(steel.position.x+(selected==='blade'?Math.sin(hits*1.7)*.22:selected==='shoe'?(hits%2?.24:-.24):Math.sin(hits*1.25)*.17),steel.position.y+.18,steel.position.z);targetMarker.rotation.z=t*.8;for(const {f,offset} of flames){f.scale.y=.8+Math.sin(t*9+offset)*.25;f.position.y=1.48+Math.sin(t*7+offset)*.08}firelight.intensity=26+Math.sin(t*11)*5;water.position.y=.83+Math.sin(t*2)*.012;if(heatActive){temp=Math.min(1150,temp+dt*(125+level*65));if(temp>=1150)heatActive=false;refresh()}else if(!ready&&temp>20){temp=Math.max(20,temp-dt*(stage==='forging'?15:8));refresh()}
 if(hammerTime>0){hammerTime=Math.max(0,hammerTime-dt);const duration=tool==='precision'?.7:tool==='peen'?.62:.56;const phase=1-hammerTime/duration;hammer.rotation.z=-.95+Math.sin(phase*Math.PI)*1.45;if(!impact&&phase>=.48){impact=true;hits++;combo=(performance.now()-lastImpact<2100)?Math.min(10,combo+1):1;lastImpact=performance.now();const zoneTarget=selected==='blade'?Math.sin(hits*1.7)*.22:selected==='shoe'?(hits%2?.24:-.24):Math.sin(hits*1.25)*.17;
 const distance=Math.abs(aimX-zoneTarget)+Math.abs(aimZ)*.6;
 lastAccuracy=Math.max(0,Math.min(100,Math.round(100-distance*(tool==='precision'?95:tool==='peen'?180:140))));precisionSum+=lastAccuracy;precisionCount++;
