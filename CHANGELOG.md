@@ -1,11 +1,9 @@
 # Changelog
 
-## Beta 0.5.0
-- Direkte Touch-Schläge auf das Werkstück am Amboss.
-- Schlagserien-Anzeige und kleiner Qualitätsbonus für präzises Timing bei guter Temperatur.
-- Schmieden- und Abkühlen-Buttons je nach Fertigungsfortschritt deaktiviert.
-- Sichtbarer Hinweis für die Touch-Steuerung.
-- Vorhandenes Speicherformat beibehalten.
-
-## Beta 0.4.0
-- Stabilere Touch-Bedienung, Ladefehleranzeige und mobile Grafikoptimierungen.
+## Beta 0.6.0
+- Werkstücke verformen sich sichtbar schrittweise beim Schmieden (Haken, Hufeisen, Klinge).
+- Temperaturbalken mit Warnung vor zu niedriger bzw. zu hoher Temperatur.
+- Kamera-Zurücksetzen-Button für die mobile Steuerung.
+- Optionales Vibrationsfeedback auf unterstützten Geräten.
+- Bedienhinweise verbessert und nicht verwendeten Code entfernt.
+- Spielstand kompatibel zur bisherigen Beta 0.5.0.

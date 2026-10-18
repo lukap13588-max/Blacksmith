@@ -1,18 +1,19 @@
-# Blacksmith Simulator 3D – Beta 0.5.0
+# Blacksmith Simulator 3D – Beta 0.6.0
 
-Mobiles 3D-Schmiedespiel für Safari, Chrome und GitHub Pages.
+Mobile 3D-Schmiedewerkstatt für iPhone und Desktop. Enthält Aufträge für Eisenhaken, Hufeisen und kleine Klingen.
 
 ## Installation
-1. ZIP entpacken.
-2. `index.html`, `README.md` und `CHANGELOG.md` in das Hauptverzeichnis des GitHub-Repositories laden.
-3. GitHub Pages auf `main` / `(root)` stellen und die veröffentlichte Seite neu laden.
+Die `index.html` im Stammverzeichnis des GitHub-Repositories ersetzen und auf GitHub Pages veröffentlichen. `README.md` und `CHANGELOG.md` können ebenfalls hochgeladen werden.
 
-## Spielen
-- **Erhitzen:** Metall auf mindestens 500 °C bringen.
-- **Schmieden:** Button drücken oder das heiße Werkstück direkt antippen.
-- **Abkühlen:** Nach allen Schlägen das Werkstück abschrecken.
-- **Verkaufen:** Münzen erhalten.
-- **Esse verbessern:** Münzen für schnellere Erwärmung einsetzen.
-- Kamera mit einem Finger drehen, mit zwei Fingern zoomen.
+## Spielablauf
+1. **Erhitzen**: Warten, bis das Werkstück mindestens 500 °C erreicht.
+2. **Schmieden**: Den Button drücken oder das Werkstück am Amboss antippen.
+3. **Abkühlen**: Nach der erforderlichen Anzahl Schläge abschrecken.
+4. **Verkaufen**: Münzen verdienen und die Esse verbessern.
 
-Drei Werkstücke: Eisenhaken, Hufeisen und kleine Klinge. Der Spielstand wird lokal im Browser gespeichert. Internetzugang für Three.js erforderlich.
+Bei 500–1050 °C schmiedest du mit guter Qualität. Über 1050 °C steigt der Qualitätsverlust.
+
+## Steuerung
+Wischen dreht die Kamera, zwei Finger zoomen. Das Fadenkreuz oben rechts setzt die Kamera zurück. Münzen und Verbesserungen bleiben im Browser gespeichert.
+
+**Hinweis:** Three.js wird über CDN geladen. Zum Start ist eine Internetverbindung nötig. Die tatsächliche Darstellung auf iPhone muss im Browser geprüft werden.
