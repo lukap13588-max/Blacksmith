@@ -1,20 +1,15 @@
-# Blacksmith Simulator 3D – Beta 0.7.0
+# Blacksmith Simulator 3D – Beta 0.8.2
 
-## Installation
-Dateien aus der ZIP in das Stammverzeichnis des GitHub-Repositories laden. `index.html` ersetzen, committen und GitHub Pages neu laden. Internet wird für Three.js benötigt.
+## Neue sichtbare Ausbaustufen
+Amboss, Abschreckbecken, Werkbank und Esse erhalten für jede der ersten fünf Stufen ein eigenes 3D-Modell mit anderer Größe, Form und Ausstattung. Die Modelle wechseln sofort beim Kauf. Der Spielstand wird weiterhin im Browser gespeichert.
 
-## Neues Schmiedesystem
-- Drei Werkzeuge: Flachhammer (Standard), Finnenhammer (anspruchsvoll), Präzisionshammer (langsamer und genauer).
-- Auf dem Amboss erscheint beim Schmieden ein leuchtender Zielkreis. Auf das Metall in der Nähe des Kreises tippen. Alternativ weiter den Button **Schmieden** nutzen.
-- Trefferpräzision wirkt sich auf die Produktqualität aus; die Durchschnittspräzision gibt beim Verkauf einen kleinen Bonus.
-- Zu kaltes und zu heißes Metall verringert die Qualität.
+## Installation auf GitHub Pages
+1. ZIP entpacken.
+2. `index.html`, `README.md`, `CHANGELOG.md` im Repository-Hauptverzeichnis ersetzen.
+3. Commit speichern und die Spielseite aktualisieren.
 
-## Ablauf
-1. Produkt wählen.
-2. **Erhitzen** drücken und mindestens 500 °C abwarten.
-3. Werkzeug wählen und mit dem Finger auf das Werkstück oder **Schmieden** drücken.
-4. Bei Bedarf erneut erhitzen.
-5. Nach allen Schlägen **Abkühlen** und **Verkaufen** drücken.
-6. Münzen für Esse-Upgrades verwenden.
+## Bedienung
+Metall erhitzen, schmieden, abkühlen, verkaufen. Über **🏗 Werkstatt** Amboss, Becken und Werkbank ausbauen; die Esse über den normalen Upgrade-Button verbessern.
 
-Bestehende Münzen und Upgrades werden weiterhin unter dem bisherigen Speicherschlüssel gespeichert.
+## Technischer Hinweis
+Die Modelle sind programmatisch aus 3D-Grundformen zusammengesetzt und noch keine extern gestalteten, hochdetaillierten Assets. Die WebGL-Darstellung und Touch-Funktionen müssen auf dem Zielgerät getestet werden.
