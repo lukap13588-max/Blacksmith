@@ -1,12 +1,18 @@
-# Blacksmith Simulator 3D – Alpha 0.3.2
+# Blacksmith Simulator 3D – Alpha 0.3.3
 
 Mobiles 3D-Schmiedespiel mit Three.js.
 
-## GitHub Pages
-Die Dateien `index.html`, `README.md` und `CHANGELOG.md` ins Hauptverzeichnis des öffentlichen GitHub-Repositories hochladen. In Settings → Pages `main` und `/ (root)` wählen.
+## Starten
+Die Dateien ins Hauptverzeichnis des öffentlichen GitHub-Repositories hochladen. GitHub Pages auf `main` / `/ (root)` einstellen. Dann die GitHub-Pages-Adresse in Safari öffnen. Internetverbindung für Three.js erforderlich.
 
 ## Steuerung
-Wischen: Kamera drehen. Zwei Finger: Zoom. Buttons: Erhitzen, Schmieden, Abkühlen und Verkaufen.
+- Wischen über die 3D-Szene: Kamera drehen
+- Zwei Finger: Zoom
+- Erhitzen: Werkstück in die Esse legen
+- Schmieden: Nach 500 °C wiederholt tippen
+- Abkühlen: Nach allen Schlägen abschrecken
+- Produkt verkaufen: Münzen verdienen
+- Esse: Mit Münzen verbessern
 
-## Hinweis
-Three.js benötigt eine Internetverbindung.
+## Fehlerbehebung
+Bei einer alten Version Safari neu laden oder in einem privaten Tab öffnen.

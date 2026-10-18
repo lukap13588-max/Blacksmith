@@ -1,5 +1,9 @@
-# Änderungen
+# Changelog
+
+## Alpha 0.3.3
+- Touch-Eingaben für Bedienbuttons und Werkstückauswahl repariert (`pointer-events:auto`).
+- Bedienoberfläche mit höherem z-index über der 3D-Leinwand platziert.
+- Bestehende 3D-Szene und Spielmechaniken erhalten.
 
 ## Alpha 0.3.2
-- JavaScript-Abbruch behoben: Auftragsstatus aktualisiert nur den vorhandenen Textknoten, statt die Fortschrittsanzeige aus dem DOM zu löschen.
-- Keine Spielstände absichtlich zurückgesetzt.
+- Fortschrittsanzeige beim Aktualisieren erhalten.
